@@ -63,7 +63,7 @@ export default {
   },
   created() {
     gradesService
-      .allJoinedGradesForStudentInCourse(
+      .allGradesForStudentInCourse(
         this.$route.params.courseId,
         this.$store.state.user.id
       )

@@ -27,7 +27,7 @@ public class StudentCourseController {
     }
 
     @RequestMapping(value= "/course/{courseId}/students", method= RequestMethod.GET)
-    public List<Integer> getStudentsByCourseId(@PathVariable int courseId) {
+    public List<User> getStudentsByCourseId(@PathVariable int courseId) {
         return studentCourseDao.getStudentsByCourseId(courseId);
     }
 

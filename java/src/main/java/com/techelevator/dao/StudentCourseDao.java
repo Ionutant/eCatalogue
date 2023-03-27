@@ -9,5 +9,5 @@ public interface StudentCourseDao {
 
     void enrollInCourse(StudentCourse studentCourse);
 
-    List<Integer> getStudentsByCourseId(int courseId);
+    List<User> getStudentsByCourseId(int courseId);
 }

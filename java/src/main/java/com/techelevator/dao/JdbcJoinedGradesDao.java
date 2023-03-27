@@ -70,7 +70,7 @@ public class JdbcJoinedGradesDao implements JoinedGradesDao{
     @Override
     public List<JoinedGrades> allJoinedGradesForCourse(int courseId) {
         List<JoinedGrades> joinedGradesList = new ArrayList<>();
-        String sql = "SELECT * FROM grades " +
+        String sql = "SELECT grade_id, course_id, student_id, users.first_name, users.last_name, total_points, earned_points, status, submission_content, feedback FROM grades " +
                 "JOIN users ON users.user_id = grades.student_id " +
                 "WHERE course_id = ?;";
         SqlRowSet result = dao.queryForRowSet(sql, courseId);

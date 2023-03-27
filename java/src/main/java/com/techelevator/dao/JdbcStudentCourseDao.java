@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.StudentCourse;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -24,22 +25,30 @@ public class JdbcStudentCourseDao implements StudentCourseDao {
     }
 
     @Override
-    public List<Integer> getStudentsByCourseId(int courseId) {
-        List<Integer> resultList = new ArrayList<>();
-        String sql = "SELECT student_id, course_id FROM course_student WHERE course_id = ?";
+    public List<User> getStudentsByCourseId(int courseId) {
+        List<User> resultList = new ArrayList<>();
+        String sql = "SELECT" +
+                "\tfirst_name,\n" +
+                "\tlast_name\n" +
+                "FROM users\n" +
+                "\n" +
+                "INNER JOIN course_student\n" +
+                "\t  ON users.user_id = course_student.student_id\n" +
+                "\t  \n" +
+                "\t  where course_id= ?";
         SqlRowSet result = dao.queryForRowSet(sql, courseId);
         while (result.next()) {
-            StudentCourse StudentCourse = mapRowToStudentCourse(result);
-            resultList.add(StudentCourse.getStudentId());
+            User user = mapRowToStudents(result);
+            resultList.add(user);
         }
         return resultList;
     }
 
-    private StudentCourse mapRowToStudentCourse(SqlRowSet result) {
-        StudentCourse studentCourse = new StudentCourse();
-        studentCourse.setStudentId(result.getInt("student_id"));
-        studentCourse.setCourseId(result.getInt("course_id"));
-        return studentCourse;
+    private User mapRowToStudents(SqlRowSet result) {
+        User user = new User();
+        user.setFirstname(result.getString("first_name"));
+        user.setLastname(result.getString("last_name"));
+        return user;
     }
 
 

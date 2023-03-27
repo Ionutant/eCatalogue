@@ -84,7 +84,7 @@ public class JoinedGradesController {
         return joinedGradesDao.allJoinedGradesForStudentInCourse(courseId,studentId);
     }
 
-    @RequestMapping(value = "/j/{courseId}/grades/", method = RequestMethod.GET)
+    @RequestMapping(value = "/j/{courseId}/grades", method = RequestMethod.GET)
     public List<JoinedGrades> allJoinedGradesForCourse(@PathVariable int courseId) {
         return joinedGradesDao.allJoinedGradesForCourse(courseId);
     }

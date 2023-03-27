@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     selectedCourseId() {
-      return this.selection;
+      return this.selection.charAt(this.selection.length - 1);
     },
   },
   created() {

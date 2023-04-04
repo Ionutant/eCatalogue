@@ -21,9 +21,9 @@ export default {
     return axios.get(`/j/${courseId}/grades`);
   },
 
-  allJoinedGradesForAssignment(assignmentId) {
-    return axios.get(`/j/course/${assignmentId}/grades`);
-  },
+  // allJoinedGradesForAssignment(assignmentId) {
+  //   return axios.get(`/j/course/${assignmentId}/grades`);
+  // },
 
   allGradesForStudentInCourse(courseId, studentId) {
     return axios.get(`/${courseId}/grades/${studentId}`);
@@ -33,20 +33,20 @@ export default {
     return axios.get(`/j/${courseId}/assignment/grades/${studentId}`);
   },
 
-  getGrade(assignmentId, studentId) {
-    return axios.get(`/course/curriculum/${assignmentId}/${studentId}`);
-  },
+  // getGrade(assignmentId, studentId) {
+  //   return axios.get(`/course/curriculum/${assignmentId}/${studentId}`);
+  // },
 
   getCourseAverageForStudent(courseId, studentId) {
     return axios.get(`/course/averages/${courseId}/${studentId}`);
   },
 
   updateGrade(grade) {
-    return axios.put("/course/assignment/work", grade);
+    return axios.put("/course/work", grade);
   },
 
   deleteGrade(grade) {
-    return axios.delete("/course/assignment/work", grade);
+    return axios.delete("/course/work", grade);
   },
 
   getStudentIdInCourse(courseId) {

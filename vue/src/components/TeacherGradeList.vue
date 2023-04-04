@@ -5,144 +5,28 @@
       v-if="displayEditGradeForm"
       v-on:save-edit-grade="toggleEditGradeForm"
       v-bind:currentGradeObject="currentGradeObject"
-    />
-    <!-- <div
-      class="assignment-div"
-      v-for="assignment in filteredAssignments()"
-      v-bind:key="assignment.assignmentId"
-    >
-      <router-link
-        :to="{
-          name: 'instruction-content',
-          params: {
-            instructionId: assignment.dailyInstructionsId,
-          },
-        }"
-      >
-        <span id="assignment-grade-header">
-          <h2 id="assignment-grade-title">{{ assignment.assignmentTitle }}</h2>
-          <h2 id="due-date">Due: {{ assignment.dueDate }}</h2>
-        </span>
-      </router-link>
-      <table class="grades-table">
-        <thead>
-          <tr>
-            <td class="grade-name">Student Name</td>
-            <td class="grade-points">Grade</td>
-            <td class="grade-status">Status</td>
-            <td class="grade-feedback">Feedback</td>
-            <td class="view-column">Submission</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="grade in filteredGrades(assignment.assignmentId)"
-            v-bind:key="grade.assignmentId"
-            v-bind:class="{
-              'submitted-highlight': grade.status == 'Submitted',
-              'incomplete-highlight': grade.status == 'Incomplete',
-            }"
-            class="student-grade-row"
-          >
-            <td class="grade-name" id="student-name">
-              {{ grade.lastName }}, {{ grade.firstName }}
-            </td>
-            <td class="grade-points">
-              <button
-                id="grade-score-btn"
-                v-on:click="toggleEditGradeForm(), setCurrentGradeObject(grade)"
-              >
-                {{ grade.earnedPoints }} / {{ grade.totalPoints }}
-              </button>
-            </td>
-            <td class="grade-status">{{ grade.status }}</td>
-            <td class="grade-feedback" id="teacher-feedback">
-              {{ grade.feedback }}
-            </td>
-            <td class="view-column">
-              <button
-                id="view-grade-btn"
-                v-if="grade.status != 'Incomplete'"
-                v-on:click="toggleEditGradeForm(), setCurrentGradeObject(grade)"
-              >
-                View
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
-    <div
-      class="assignment-div"
-      v-for="assignment in filteredAssignments()"
-      v-bind:key="assignment.assignmentId"
-    >
-      <router-link
-        :to="{
-          name: 'instruction-content',
-          params: {
-            instructionId: assignment.dailyInstructionsId,
-          },
-        }"
-      >
-        <span id="assignment-grade-header">
-          <h2 id="assignment-grade-title">{{ assignment.assignmentTitle }}</h2>
-          <h2 id="due-date">Due: {{ assignment.dueDate }}</h2>
-        </span>
-      </router-link>
-      <table class="grades-table">
-        <thead>
-          <tr>
-            <td class="grade-name">Student Name</td>
-            <td class="grade-points">Grade</td>
-            <td class="grade-status">Status</td>
-            <td class="grade-feedback">Feedback</td>
-            <td class="view-column">Submission</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="grade in filteredGrades(assignment.assignmentId)"
-            v-bind:key="grade.assignmentId"
-            v-bind:class="{
-              'submitted-highlight': grade.status == 'Submitted',
-              'incomplete-highlight': grade.status == 'Incomplete',
-            }"
-            class="student-grade-row"
-          >
-            <td class="grade-name" id="student-name">
-              {{ grade.lastName }}, {{ grade.firstName }}
-            </td>
-            <td class="grade-points">
-              <button
-                id="grade-score-btn"
-                v-on:click="toggleEditGradeForm(), setCurrentGradeObject(grade)"
-              >
-                {{ grade.earnedPoints }} / {{ grade.totalPoints }}
-              </button>
-            </td>
-            <td class="grade-status">{{ grade.status }}</td>
-            <td class="grade-feedback" id="teacher-feedback">
-              {{ grade.feedback }}
-            </td>
-            <td class="view-column">
-              <button
-                id="view-grade-btn"
-                v-if="grade.status != 'Incomplete'"
-                v-on:click="toggleEditGradeForm(), setCurrentGradeObject(grade)"
-              >
-                View
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    ></edit-grade-form>
+  </div>
+  <div>
+    <h2>Students for Course {{ courseId }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in users" :key="user.id">
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-import AssignmentService from "../services/AssignmentService";
 import gradesService from "../services/GradesService";
 import EditGradeForm from "../components/EditGradeForm.vue";
 
@@ -151,7 +35,7 @@ export default {
   data() {
     return {
       grades: [],
-      assignments: [],
+      // assignments: [],
       currentGradeObject: {},
       displayEditGradeForm: false,
     };
@@ -160,14 +44,14 @@ export default {
     EditGradeForm,
   },
   created() {
-    AssignmentService.getAllAssignmentsInCourse(
-      this.$route.params.courseId
-    ).then((response) => {
-      if (response.status == 200) {
-        this.assignments = response.data;
-        console.log(response.data);
-      }
-    });
+    // AssignmentService.getAllAssignmentsInCourse(
+    //   this.$route.params.courseId
+    // ).then((response) => {
+    //   if (response.status == 200) {
+    //     this.assignments = response.data;
+    //     console.log(response.data);
+    //   }
+    // });
     // AssignmentService.getStudentsByCourseId(this.$route.params.courseId).then(
     //   (response) => {
     //     console.log(response);
@@ -184,6 +68,13 @@ export default {
         );
       }
     });
+    gradesService
+      .allJoinedGradesForCourse(this.$route.params.courseId)
+      .then((response) => {
+        if (response.status == 200) {
+          this.grades = response.data;
+        }
+      });
   },
   methods: {
     filteredGrades(assignmentId) {
@@ -193,15 +84,6 @@ export default {
         .sort((a, b) => (a.lastName > b.lastName ? 1 : -1));
     },
 
-    filteredAssignments() {
-      let tempAssigns = this.assignments;
-      return tempAssigns
-        .filter(
-          (assignment) =>
-            this.filteredGrades(assignment.assignmentId).length > 0
-        )
-        .sort((a, b) => (a.assignmentId > b.assignmentId ? 1 : -1));
-    },
     toggleEditGradeForm() {
       if (this.displayEditGradeForm == false) {
         this.displayEditGradeForm = true;

@@ -15,12 +15,13 @@
       </div>
       <div class="form-element">
         <label for="course-description">Course Description:</label>
+
         <textarea
           id="course-description-input"
           v-model="newCourse.courseDescription"
           rows="5"
           required
-        />
+        ></textarea>
       </div>
       <div class="form-element">
         <label for="difficulty">Grade Level:</label>
@@ -59,7 +60,6 @@
 </template>
 
 <script>
-import curriculumService from "../services/CurriculumService";
 import courseService from "../services/CourseService";
 
 export default {
@@ -80,18 +80,7 @@ export default {
     createNewCourse() {
       courseService.createCourse(this.newCourse).then((response) => {
         if (response.status == 201) {
-          const courseId = response.data;
-          const newCurriculum = {
-            curriculumId: "",
-            courseId: courseId,
-            curriculumTitle: "",
-            curriculumDescription: "",
-          };
-          curriculumService.createCurriculum(newCurriculum).then((resp) => {
-            if (resp.status == 201) {
-              this.resetForm();
-            }
-          });
+          console.log(`New course created with ID: ${response.data}`);
         } else {
           console.log("Error - failed to create new course");
         }

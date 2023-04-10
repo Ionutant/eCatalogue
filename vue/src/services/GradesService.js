@@ -49,7 +49,7 @@ export default {
     return axios.delete("/course/work", grade);
   },
 
-  getStudentIdInCourse(courseId) {
+  getStudentInCourse(courseId) {
     return axios.get(`/course/${courseId}/students`);
   },
 };

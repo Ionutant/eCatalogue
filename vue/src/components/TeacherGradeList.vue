@@ -1,25 +1,54 @@
 <template>
   <div class="teacher-grade-list">
+    <AddGradeForm
+      id="add-grade-form"
+      v-if="displayAddGradeForm"
+      v-on:save-add-grade="toggleAddGradeForm"
+    ></AddGradeForm>
     <edit-grade-form
       id="edit-grade-form"
       v-if="displayEditGradeForm"
       v-on:save-edit-grade="toggleEditGradeForm"
       v-bind:currentGradeObject="currentGradeObject"
     ></edit-grade-form>
-  </div>
-  <div>
-    <h2>Students for Course {{ courseId }}</h2>
-    <table>
+
+    <button
+      id="view-grade-detail-btn"
+      v-on:click="toggleAddGradeForm(), setCurrentGradeObject(grade)"
+    >
+      Add Grade
+    </button>
+    <table class="student-grades-table" v-show="grades.length > 0">
       <thead>
         <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th id="course-name">Name</th>
+          <th id="grade-status">Status</th>
+          <th id="grade-points">Grade</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" :key="user.id">
-          <td>{{ user.first_name }}</td>
-          <td>{{ user.last_name }}</td>
+        <tr
+          v-for="grade in grades"
+          v-bind:key="grade.gradeId"
+          v-bind:grade="grade"
+          v-bind:class="{
+            'submitted-highlight': grade.status == 'Submitted',
+            'incomplete-highlight': grade.status == 'Incomplete',
+          }"
+        >
+          <td>
+            {{ grade.firstName + " " + grade.lastName }}
+          </td>
+
+          <td id="points">{{ grade.earnedPoints }}/{{ grade.totalPoints }}</td>
+          <td id="view-grade-btn-container">
+            <button
+              id="view-grade-detail-btn"
+              v-on:click="toggleEditGradeForm(), setCurrentGradeObject(grade)"
+            >
+              Grade
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -29,6 +58,7 @@
 <script>
 import gradesService from "../services/GradesService";
 import EditGradeForm from "../components/EditGradeForm.vue";
+import AddGradeForm from "../components/AddGradeForm.vue";
 
 export default {
   name: "teacher-grade-list",
@@ -38,10 +68,12 @@ export default {
       // assignments: [],
       currentGradeObject: {},
       displayEditGradeForm: false,
+      displayAddGradeForm: false,
     };
   },
   components: {
     EditGradeForm,
+    AddGradeForm,
   },
   created() {
     // AssignmentService.getAllAssignmentsInCourse(
@@ -61,6 +93,16 @@ export default {
     //     }
     //   }
     // );
+
+    gradesService
+      .getStudentInCourse(this.$route.params.courseId)
+      .then((response) => {
+        // console.log(response.data);
+        if (response.status == 200) {
+          // this.grades = response.data;
+        }
+      });
+
     gradesService.getAllJoinedGrades().then((resp) => {
       if (resp.status == 200) {
         this.grades = resp.data.filter(
@@ -77,13 +119,6 @@ export default {
       });
   },
   methods: {
-    filteredGrades(assignmentId) {
-      let tempArray = this.grades;
-      return tempArray
-        .filter((grade) => grade.assignmentId == assignmentId)
-        .sort((a, b) => (a.lastName > b.lastName ? 1 : -1));
-    },
-
     toggleEditGradeForm() {
       if (this.displayEditGradeForm == false) {
         this.displayEditGradeForm = true;
@@ -91,6 +126,15 @@ export default {
         this.displayEditGradeForm = false;
       }
     },
+
+    toggleAddGradeForm() {
+      if (this.displayAddGradeForm == false) {
+        this.displayAddGradeForm = true;
+      } else {
+        this.displayAddGradeForm = false;
+      }
+    },
+
     setCurrentGradeObject(grade) {
       this.currentGradeObject = grade;
     },
@@ -103,8 +147,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
-.assignment-div > a {
+.templete-div- .assignment-div > a {
   text-decoration: none;
   color: #0564bd;
 }

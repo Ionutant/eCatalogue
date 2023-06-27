@@ -3,7 +3,11 @@
     <nav-bar />
     <grade-page-hero />
     <student-grade-list v-if="!teacher" id="student-grade-list" />
-    <teacher-grade-list v-if="teacher" id="teacher-grade-list" />
+    <teacher-grade-list
+      v-if="teacher"
+      :grades="grades"
+      id="teacher-grade-list"
+    />
     <footer-section id="grades-footer" />
   </div>
 </template>
@@ -29,6 +33,7 @@ export default {
       teacher: this.$store.state.user.authorities.some(
         (e) => e["name"] === "ROLE_TEACHER"
       ),
+      grades: [],
     };
   },
 };

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-// import gradesService from "../services/GradesService";
+import gradesService from "../services/GradesService";
 import studentService from "../services/StudentService";
 export default {
   name: "add-grade-form",
@@ -80,16 +80,58 @@ export default {
     //     }
     //   });
     // },
+    // saveGrade() {
+    //   this.addGradeModel.gradeId = null;
+    //   console.log("student fullname", this.student);
+    //   let fullname = this.student;
+    //   let studentFound = this.students.find((student) =>
+    //     fullname.includes(student.firstname)
+    //   );
+    //   console.log("student found", studentFound);
+    //   this.addGradeModel.studentId = studentFound.id;
+    //   console.log(this.$route);
+    //   this.addGradeModel.courseId = this.$route.params.courseId;
+    //   this.addGradeModel.totalPoints = 10;
+    //   this.addGradeModel.earnedPoints = this.earnedPoints;
+    //   this.addGradeModel.status = null; // completați cu valoarea corectă
+    //   this.addGradeModel.submissionContent = null; // completați cu valoarea corectă
+    //   this.addGradeModel.feedback = null; // completați cu valoarea corectă
+    //   console.log("Students ", this.students);
     saveGrade() {
       this.addGradeModel.gradeId = null;
-      this.addGradeModel.studentId = null;
-      this.addGradeModel.courseId = null;
-      this.addGradeModel.totalPoints = null;
-      this.addGradeModel.earnedPoints = null;
-      this.addGradeModel.status = null;
-      this.addGradeModel.submissionContent = null;
-      this.addGradeModel.feedback = null;
-
+      console.log("student fullname", this.student);
+      let fullname = this.student;
+      let studentFound = this.students.find(
+        (student) =>
+          fullname.includes(student.firstname) &&
+          fullname.includes(student.lastname)
+      );
+      console.log("student found", studentFound);
+      if (studentFound) {
+        this.addGradeModel.studentId = studentFound.id;
+        console.log(this.$route);
+        this.addGradeModel.courseId = this.$route.params.courseId;
+        this.addGradeModel.totalPoints = 10;
+        this.addGradeModel.earnedPoints = this.earnedPoints;
+        this.addGradeModel.status = null; // completați cu valoarea corectă
+        this.addGradeModel.submissionContent = null; // completați cu valoarea corectă
+        this.addGradeModel.feedback = null; // completați cu valoarea corectă
+        console.log("Students ", this.students);
+      } else {
+        console.log("Student not found");
+        // Tratați situația în care nu s-a găsit studentul
+      }
+      gradesService
+        .addGrade(this.addGradeModel)
+        .then((response) => {
+          console.log(response);
+          // Executați acțiunile necesare după adăugarea notei cu succes
+          location.reload();
+        })
+        .catch((error) => {
+          console.error(error);
+          // Tratați cazurile de eroare și afișați un mesaj de eroare corespunzător
+        });
       console.log(this.student);
       console.log(this.students);
 

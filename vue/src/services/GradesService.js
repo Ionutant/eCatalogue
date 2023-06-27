@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default {
   addGrade(grade) {
-    return axios.post("/course/assignment/work", grade);
+    console.log(grade.courseId);
+    return axios.post(`/course/${grade.courseId}`, grade);
   },
 
   getAllGrades() {

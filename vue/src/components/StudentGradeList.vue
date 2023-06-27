@@ -44,7 +44,6 @@
 </template>
 
 <script>
-// import AssignmentService from "../services/AssignmentService";
 import gradesService from "../services/GradesService";
 import ViewGradeForm from "./ViewGradeForm.vue";
 export default {
@@ -70,14 +69,6 @@ export default {
       });
   },
   methods: {
-    // getAssignmentNameById(assignmentId) {
-    //   AssignmentService.getAssignmentById(assignmentId).then((resp) => {
-    //     if (resp.status == 200) {
-    //       const assignment = resp.data;
-    //       return assignment.assignmentTitle;
-    //     }
-    //   });
-    // },
     toggleViewGradeForm() {
       if (this.displayViewGradeForm == false) {
         this.displayViewGradeForm = true;
@@ -94,7 +85,7 @@ export default {
       let earned = 0;
       let count = 0;
       this.grades.forEach((grade) => {
-        if (grade.status == "Graded") {
+        if (grade.gradeId > 0) {
           earned += parseInt(grade.earnedPoints);
           count++;
         }

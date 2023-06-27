@@ -1,13 +1,11 @@
 <template>
   <div>
     <form class="edit-grade-form" v-on:submit.prevent="saveGrade">
-      <h2 id="edit-grade-form-header">REVIEW STUDENT SUBMISSION</h2>
+      <h2 id="edit-grade-form-header">REVIEW STUDENT GRADE</h2>
       <table id="student-assignment-info">
         <thead id="grade-header-row">
           <tr>
             <td id="grade-student-name-head">STUDENT NAME</td>
-            <td class="assignment-title">ASSIGNMENT</td>
-            <td class="assignment-status">STATUS</td>
           </tr>
         </thead>
         <tbody>
@@ -16,21 +14,21 @@
               {{ currentGradeObject.firstName }}
               {{ currentGradeObject.lastName }}
             </td>
-            <td class="assignment-title">
+            <!-- <td class="assignment-title">
               {{ currentGradeObject.assignmentTitle }}
             </td>
-            <td class="assignment-status">{{ currentGradeObject.status }}</td>
+            <td class="assignment-status">{{ currentGradeObject.status }}</td> -->
           </tr>
         </tbody>
       </table>
-      <div class="submission-section">
+      <!-- <div class="submission-section">
         <label for="submission-content" id="submission-content-label"
           >STUDENT SUBMISSION:</label
         >
         <p id="submission-content">
           {{ currentGradeObject.submissionContent }}
         </p>
-      </div>
+      </div> -->
       <table id="student-score-table">
         <thead>
           <tr id="score-header-row">
@@ -101,7 +99,8 @@ export default {
 
 <style>
 .edit-grade-form {
-  background-color: #e4e4e4fd;
+  /* background-color: #e4e4e4fd; */
+  background-image: radial-gradient(circle farthest-side, #fffffffd, #d8d6d6fd);
   box-shadow: 0 0 6px 4px rgba(44, 43, 43, 0.233);
   border-radius: 10px;
   padding-left: 40px;
@@ -114,14 +113,6 @@ export default {
   text-align: center;
   color: #032647b4;
   padding-bottom: 10px;
-}
-
-#student-assignment-info {
-  width: 100%;
-  margin-bottom: 30px;
-  box-shadow: 0 0 4px 3px rgba(97, 97, 97, 0.151);
-  border: none;
-  border-radius: 5px;
 }
 
 #grade-header-row {
@@ -183,7 +174,8 @@ export default {
 #score-header-row {
   font-weight: bold;
   font-size: 1rem;
-  background-color: #abdb9fb0;
+  /* background-color: #abdb9fb0; */
+  background: linear-gradient(40deg, #30893579 40%, #07c21a79 40%);
   line-height: 1.5rem;
   color: #040f31de;
   border-bottom: 2px solid rgba(58, 58, 58, 0.425);
@@ -195,8 +187,13 @@ export default {
   padding: 10px;
 }
 #total-label {
-  background-color: #fcb069d8;
+  background-color: #ff0000c3;
   padding: 10px;
+  line-height: 1.5rem;
+  color: #040f31de;
+  border-bottom: 2px solid rgba(58, 58, 58, 0.425);
+  border-top: 1px solid rgba(58, 58, 58, 0.164);
+  box-shadow: 0 0 0 2px rgba(131, 130, 130, 0.089);
 }
 
 #earned-points-input {
@@ -226,12 +223,12 @@ export default {
 #feedback {
   width: 95%;
   min-height: 10vh;
-  background-color: #fff8d9fd;
+  background-color: #fff8d9;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   box-shadow: 0 0 4px 3px rgba(97, 97, 97, 0.151);
-  border: 1px solid rgba(173, 26, 26, 0.637);
+  border: 1px solid rgba(2, 2, 2, 0.637);
   border-radius: 5px;
 }
 
@@ -247,12 +244,12 @@ export default {
   font-size: 0.8em;
   text-transform: uppercase;
   padding: 5px;
-  background-color: #6ddf99;
+  background-color: #00ff62;
   color: #040f31de;
 }
 
 #edit-grade-cancel-btn {
-  background-color: #d66c6c;
+  background-color: #ff0000;
   color: #040f31de;
 }
 

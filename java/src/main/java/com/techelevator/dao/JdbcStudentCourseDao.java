@@ -28,6 +28,7 @@ public class JdbcStudentCourseDao implements StudentCourseDao {
     public List<User> getStudentsByCourseId(int courseId) {
         List<User> resultList = new ArrayList<>();
         String sql = "SELECT" +
+                "\tuser_id,\n"+
                 "\tfirst_name,\n" +
                 "\tlast_name\n" +
                 "FROM users\n" +
@@ -48,6 +49,7 @@ public class JdbcStudentCourseDao implements StudentCourseDao {
         User user = new User();
         user.setFirstname(result.getString("first_name"));
         user.setLastname(result.getString("last_name"));
+        user.setId(result.getInt("user_id"));
         return user;
     }
 

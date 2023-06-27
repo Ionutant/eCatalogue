@@ -10,8 +10,6 @@
     <table class="student-grades-table">
       <thead>
         <tr>
-          <th id="course-name">Course</th>
-          <th id="grade-status">Status</th>
           <th id="grade-points">Grade</th>
           <th id="view-column">Details</th>
         </tr>
@@ -26,8 +24,6 @@
             'incomplete-highlight': grade.status == 'Incomplete',
           }"
         >
-          <td>{{ grade.assignmentTitle }}</td>
-          <td>{{ grade.status }}</td>
           <td id="points">{{ grade.earnedPoints }}/{{ grade.totalPoints }}</td>
           <td id="view-grade-btn-container">
             <button
@@ -96,18 +92,20 @@ export default {
   computed: {
     totalCourseScore() {
       let earned = 0;
-      let total = 0;
+      let count = 0;
       this.grades.forEach((grade) => {
         if (grade.status == "Graded") {
           earned += parseInt(grade.earnedPoints);
-          total += parseInt(grade.totalPoints);
+          count++;
         }
       });
-      if (this.grades.length == 0) {
+
+      if (count === 0) {
         return "You have no grade yet";
       }
 
-      return Math.round((earned / total) * 100) + "%";
+      const average = earned / count;
+      return average.toFixed(2);
     },
   },
 };
@@ -165,10 +163,12 @@ export default {
 
 #grade-points {
   width: 10%;
+  text-align: center;
 }
 
 #grade-status {
   width: 15%;
+  text-align: center;
 }
 
 #view-column {
@@ -182,6 +182,10 @@ export default {
 
 #view-grade-detail-btn {
   margin-left: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
   width: fit-content;
   border: none;
   box-shadow: 0 1px 1px 1px rgba(39, 39, 39, 0.171);
@@ -191,9 +195,33 @@ export default {
   text-transform: uppercase;
   padding: 5px;
   padding-inline: 8%;
-  background-color: #5e6681;
+  background-color: #002a62;
   color: #fff8e2;
   box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+}
+#add-grade-detail-btn {
+  margin-left: 0%;
+  margin-bottom: 0.5cm;
+  width: fit-content;
+  border: none;
+  box-shadow: 0 1px 1px 1px rgba(39, 39, 39, 0.171);
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  padding: 5px;
+  padding-inline: 8%;
+  background-color: #002a62;
+  color: #fff8e2;
+  box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+}
+
+#add-grade-detail-btn:hover {
+  background-color: #0b60ce;
+  color: #fcfbf7;
+  box-shadow: 0 8px 24px 0 rgb(16 39 112 / 50%);
+  transform: translateX(1%);
+  transform: translate3d(2%, 2%, 2%);
 }
 
 #view-grade-detail-btn:hover {
@@ -221,8 +249,10 @@ export default {
 }
 
 #points {
-  font-weight: 600;
+  font-weight: 1600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow bold", Arial, sans-serif;
   color: #040f31c4;
+  text-align: center;
 }
 
 .total-course-score {

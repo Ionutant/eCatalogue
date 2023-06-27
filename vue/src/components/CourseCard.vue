@@ -10,7 +10,7 @@
       <div class="card-info">
         <div class="card-text">
           <h2 class="course-title">{{ course.courseTitle }}</h2>
-          <h4 class="course-difficulty">Credits {{ course.difficulty }}</h4>
+          <h4 class="course-difficulty">Difficulty {{ course.difficulty }}</h4>
         </div>
         <div class="card-icon">
           <svg viewBox="0 0 28 25">

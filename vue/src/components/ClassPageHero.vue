@@ -73,7 +73,7 @@ export default {
 .hero-one {
   align-self: center;
   justify-content: flex-start;
-  color: #f4ff57;
+  color: #000000;
   width: 50%;
 }
 .course-btns-container {

@@ -2,27 +2,12 @@
   <nav class="nav-top">
     <router-link :to="{ name: 'home' }"
       ><div class="title-div">
-        <img src="../../public/images/icon2.png" alt="icon2" />
-        <h2>eLearning</h2>
+        <img src="../../public/images/icon3.png" alt="icon3" />
+        <h2>eCatalogue</h2>
       </div>
     </router-link>
 
     <ul>
-      <li>
-        <div class="notification" v-on:click.prevent="goToGradePage">
-          <img
-            v-if="teacher"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABMUlEQVRIie2Vu0oDQRSGv5OVbIxF8gDBJisWoilFn8BgbWGiYJWQxnfR0jaChbVo5QPYWWfBYrFPE8mEzB4LoyzGJbOLIAFPNZfz/9+ZGwPLHuKaOA5PAsE+ACjeQSm4Dl10BedK1B4BdaA+a7vpFiXooOkbqXQFOZ8BAA0VufR1eCUb9yY34G3QrnkS3wE7P9N5tvH0sLx5+5oZoIOmP5HqU6p5AlJkuJu2ktQzMIVqb6H5R4kNI5Vu2nQqQJT2QvPPXJFWZgCw5QpAZTsPYNUZgJbzAH4l/gF/D5h7yfpyVjJ2fCFIJ6NVvzjyetLoj5KjK9/TJtY8CrKXtVLQ08naNAD2k6NzW6Rgs5t/aad5tbnD+Ucz4XEE1GbdyA9u1l10zrdIiTtABEQKGS/AMsc7thJTmvVn6PsAAAAASUVORK5CYII="
-          />
-          <div
-            class="notificationcount"
-            v-if="submittedGrades.length > 0 && teacher"
-          >
-            {{ submittedGrades.length }}
-          </div>
-        </div>
-      </li>
-
       <li><router-link :to="{ name: 'home' }">Home</router-link></li>
       <li><router-link :to="{ name: 'account' }">Account</router-link></li>
       <li>
@@ -78,32 +63,7 @@ body {
   margin: 0;
   width: auto;
 }
-.notification {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.notificationcount {
-  font-family: Arial, Helvetica, sans-serif;
-}
-.notification > .notificationcount {
-  top: 8px;
-  right: 22px;
-  color: #fff;
-  background-color: #dc3549;
-  height: 14px;
-  min-width: 5px;
-  font-size: 12px;
-  font-weight: 500;
-  position: absolute;
-  border-radius: 14px;
-  padding: 0 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .title-div {
   display: flex;
   align-items: center;
@@ -120,7 +80,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #04469e;
+  background-color: #002a62;
 }
 .nav-top ul {
   display: flex; /* 5 */

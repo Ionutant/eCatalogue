@@ -13,7 +13,7 @@
     ></edit-grade-form>
 
     <button
-      id="view-grade-detail-btn"
+      id="add-grade-detail-btn"
       v-on:click="toggleAddGradeForm(), setCurrentGradeObject(grade)"
     >
       Add Grade
@@ -22,8 +22,8 @@
       <thead>
         <tr>
           <th id="course-name">Name</th>
-          <th id="grade-status">Status</th>
-          <th id="grade-points">Grade</th>
+          <th id="grade-status">Grade</th>
+          <th id="grade-points">View</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +36,7 @@
             'incomplete-highlight': grade.status == 'Incomplete',
           }"
         >
-          <td>
+          <td class="grade-name">
             {{ grade.firstName + " " + grade.lastName }}
           </td>
 
@@ -218,15 +218,17 @@ export default {
 
 .grade-name {
   width: 20%;
-}
-
-#student-name {
-  font-weight: 500;
-  color: rgba(42, 42, 43, 0.705);
+  font-weight: 1600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow bold", Arial, sans-serif;
+  color: #040f31c4;
+  text-align: center;
 }
 
 .grade-points {
-  width: 10%;
+  font-weight: 1600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow bold", Arial, sans-serif;
+  color: #040f31c4;
+  text-align: center;
 }
 
 .grade-status {

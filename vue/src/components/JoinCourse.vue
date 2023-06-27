@@ -7,7 +7,9 @@
           v-bind:key="course.courseTitle"
           v-bind:course="course"
         >
-          {{ course.courseTitle }}-- Course ID: {{ course.courseId }}
+          {{ course.courseTitle }} |Course ID:
+          {{ course.courseId }} |Difficulty:
+          {{ course.difficulty }}
         </option>
       </select>
       <input type="submit" value="Join" id="join-course-submit-btn" />

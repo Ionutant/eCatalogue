@@ -47,7 +47,7 @@ export default {
 
 #student-grade-list {
   width: 70%;
-  box-shadow: 0 0 0 1px rgba(107, 107, 107, 0.185);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.185);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15%;
   margin-right: 15%;
@@ -62,7 +62,7 @@ export default {
 }
 #teacher-grade-list {
   width: 70%;
-  box-shadow: 0 0 0 2px rgba(182, 179, 179, 0.281);
+  box-shadow: 0 0 0 2px rgba(4, 4, 4, 0.281);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: 15%;
   margin-right: 15%;

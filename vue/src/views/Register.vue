@@ -2,7 +2,7 @@
   <div id="register" class="text-center">
     <div id="app-title-div">
       <img src="../../public/images/icon2.png" alt="icon2-logo" />
-      <h1 class="app-title">eLearning</h1>
+      <h1 class="app-title">eCatalogue</h1>
     </div>
     <form class="form-register" @submit.prevent="register">
       <h1 class="create-account-header">Create Account</h1>
@@ -151,7 +151,10 @@ export default {
 
 #register {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #E5E7E9;
+  /* background-color: #E5E7E9; */
+  background: url(https://i.makeagif.com/media/10-22-2020/Pms24f.gif) center
+    center no-repeat;
+  background-size: cover;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -184,7 +187,7 @@ export default {
   height: fit-content;
   padding: 2rem 3rem;
   text-align: center;
-  background-color: #3498DB;
+  background-color: #3498db;
   border-radius: 4px;
   box-shadow: 10px 10px #5e6681;
 }
@@ -238,10 +241,11 @@ export default {
 }
 
 .app-title {
+  font-family: Copperplate, Papyrus, fantasy;
   margin-bottom: 0px;
   font-size: 4em;
   font-weight: 500;
-  color: #3498DB;
+  color: #3498db;
 }
 
 .create-account-header {

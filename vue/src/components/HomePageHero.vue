@@ -2,9 +2,7 @@
   <div class="home-page-hero">
     <div class="hero-container">
       <div class="hero-one">
-        <h1 class="hero-title">
-          Welcome, {{ $store.state.user.firstname }}!
-        </h1>
+        <h1 class="hero-title">Welcome, {{ $store.state.user.firstname }}!</h1>
         <div class="home-page-btn-container">
           <button v-bind="teacher" v-if="!teacher" v-on:click="showCourses">
             Join New Course
@@ -28,10 +26,7 @@
         </div>
       </div>
       <div class="hero-two">
-        <img
-          class="hero-picture"
-          src="../../public/Logo-UT-s.png"
-        />
+        <img class="hero-picture" src="../../public/logo-sc.png" />
       </div>
     </div>
   </div>
@@ -78,13 +73,13 @@ export default {
 .hero-container {
   display: flex;
   justify-content: space-between;
-  background-color: #001a33d0;
-  max-height: 18%;
+  background-color: #005eff64;
+  max-height: 10%;
 }
 
 .hero-container div {
   display: flex;
-  padding: 20px;
+  padding: 0px;
 }
 
 .home-page-btn-container {
@@ -135,9 +130,14 @@ export default {
 }
 
 .hero-picture {
-  border-radius: 8px;
+  border-radius: 80px;
   height: 200vh;
   justify-content: right;
+  width: auto;
+  /* height: auto; */
+
+  text-align: center;
+  padding: 15px;
 }
 
 #new-course-form-popup {

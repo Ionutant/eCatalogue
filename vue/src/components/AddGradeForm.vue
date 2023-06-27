@@ -1,7 +1,7 @@
 <template>
   <div>
     <form class="add-grade-form" v-on:submit.prevent="saveGrade">
-      <h2 id="add-grade-form-header">Set a grade</h2>
+      <h2 id="add-grade-form-header">SET A GRADE</h2>
       <div class="joinClass">
         <form action="join-class" v-on:submit.prevent="enrollInCourse">
           <select name="students" id="students" v-model="student">
@@ -31,11 +31,7 @@
           </tr>
         </thead>
       </table>
-      <div class="submission-section">
-        <label for="submission-content" id="submission-content-label"
-          >STUDENT SUBMISSION:</label
-        >
-      </div>
+
       <input type="submit" value="Save" id="add-grade-submit-btn" />
       <button id="add-grade-cancel-btn" v-on:click.prevent="cancelGrade">
         Cancel
@@ -196,7 +192,7 @@ export default {
 #score-header-row {
   font-weight: bold;
   font-size: 1rem;
-  background-color: #abdb9fb0;
+  background-image: linear-gradient(-20deg, #fceabb 0%, #f8b500 100%);
   line-height: 1.5rem;
   color: #040f31de;
   border-bottom: 2px solid rgba(58, 58, 58, 0.425);
@@ -208,7 +204,7 @@ export default {
   padding: 10px;
 }
 #total-label {
-  background-color: #fcb069d8;
+  background-image: linear-gradient(-20deg, #fceabb 0%, #f8b500 100%);
   padding: 10px;
 }
 
@@ -239,12 +235,12 @@ export default {
 #feedback {
   width: 95%;
   min-height: 10vh;
-  background-color: #fff8d9fd;
+  background-color: #fdfaee;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   box-shadow: 0 0 4px 3px rgba(97, 97, 97, 0.151);
-  border: 1px solid rgba(173, 26, 26, 0.637);
+  border: 1px solid rgba(4, 4, 4, 0.637);
   border-radius: 5px;
 }
 
@@ -260,12 +256,12 @@ export default {
   font-size: 0.8em;
   text-transform: uppercase;
   padding: 5px;
-  background-color: #6ddf99;
+  background-color: #00ff62;
   color: #040f31de;
 }
 
 #add-grade-cancel-btn {
-  background-color: #d66c6c;
+  background-color: #ff0000;
   color: #040f31de;
 }
 

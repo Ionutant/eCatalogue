@@ -91,18 +91,18 @@ public class GradesController {
     public Grades getGrade(@PathVariable int studentId) {
         return gradesDao.getGrade(studentId);
     }
-
-    @RequestMapping(value = "/course/{courseId}/{studentId}", method = RequestMethod.GET)
-    public double getCourseAverageForStudent(@PathVariable int courseId, @PathVariable int studentId) {
-        return gradesDao.getCourseAverageForStudent(courseId, studentId);
-    }
+//
+//    @RequestMapping(value = "/course/{courseId}/{studentId}", method = RequestMethod.GET)
+//    public double getCourseAverageForStudent(@PathVariable int courseId, @PathVariable int studentId) {
+//        return gradesDao.getCourseAverageForStudent(courseId, studentId);
+//    }
 
     @RequestMapping(value = "/grades", method = RequestMethod.GET)
     public List<Grades> getAllGrades() {
         return gradesDao.getAllGrades();
     }
 
-    //    @PreAuthorize("hasRole('ROLE_TEACHER')")
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/course/work", method = RequestMethod.PUT)
     public void updateGrade(@RequestBody Grades grades) {

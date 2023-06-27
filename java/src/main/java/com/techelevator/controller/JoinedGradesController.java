@@ -19,8 +19,8 @@ public class JoinedGradesController {
         this.joinedGradesDao = joinedGradesDao;
     }
 
-    @PreAuthorize("hasRole('ROLE_TEACHER')")
-    @ResponseStatus(HttpStatus.CREATED)
+//    @PreAuthorize("hasRole('ROLE_TEACHER')")
+//    @ResponseStatus(HttpStatus.CREATED)
 //    @RequestMapping(value = "/j/course/assignment/work", method = RequestMethod.POST)
 //    public int addJoinedGrade(@RequestBody JoinedGrades joinedGrades) {
 //        return joinedGradesDao.addJoinedGrade(joinedGrades);
@@ -88,7 +88,6 @@ public class JoinedGradesController {
     public List<JoinedGrades> allJoinedGradesForCourse(@PathVariable int courseId) {
         List<JoinedGrades> response = joinedGradesDao.allJoinedGradesForCourse(courseId);
         return response;
-//        return joinedGradesDao.allJoinedGradesForCourse(courseId);
     }
 
 //    @RequestMapping(value = "/j/course/{studentId}", method = RequestMethod.GET)
@@ -106,17 +105,17 @@ public class JoinedGradesController {
         return joinedGradesDao.getAllJoinedGrades();
     }
 
-    @PreAuthorize("hasRole('ROLE_TEACHER')")
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/j/course/assignment/work", method = RequestMethod.PUT)
-    public void updateGrade(@RequestBody JoinedGrades joinedGrades) {
-        joinedGradesDao.updateJoinedGrade(joinedGrades);
-    }
-
-    @PreAuthorize("hasRole('ROLE_TEACHER')")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "/j/course/assignment/work", method = RequestMethod.DELETE)
-    public void deleteGrade(JoinedGrades joinedGrades) {
-        joinedGradesDao.deleteJoinedGrade(joinedGrades);
-    }
+//    @PreAuthorize("hasRole('ROLE_TEACHER')")
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(value = "/j/course/assignment/work", method = RequestMethod.PUT)
+//    public void updateGrade(@RequestBody JoinedGrades joinedGrades) {
+//        joinedGradesDao.updateJoinedGrade(joinedGrades);
+//    }
+//
+//    @PreAuthorize("hasRole('ROLE_TEACHER')")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @RequestMapping(value = "/j/course/assignment/work", method = RequestMethod.DELETE)
+//    public void deleteGrade(JoinedGrades joinedGrades) {
+//        joinedGradesDao.deleteJoinedGrade(joinedGrades);
+//    }
 }

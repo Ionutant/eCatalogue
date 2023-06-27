@@ -24,7 +24,7 @@
         ></textarea>
       </div>
       <div class="form-element">
-        <label for="difficulty">Grade Level:</label>
+        <label for="difficulty">Difficulty Level:</label>
         <select
           id="difficulty-input"
           form="create-new-course"
@@ -43,7 +43,7 @@
         </select>
       </div>
       <div class="form-element">
-        <label for="cost">Tuition Cost:</label>
+        <label for="cost">Cost:</label>
         <select
           id="cost-input"
           form="create-new-course"
@@ -81,6 +81,7 @@ export default {
       courseService.createCourse(this.newCourse).then((response) => {
         if (response.status == 201) {
           console.log(`New course created with ID: ${response.data}`);
+          this.$router.go();
         } else {
           console.log("Error - failed to create new course");
         }
@@ -113,7 +114,8 @@ export default {
 .create-new-course {
   width: 95%;
   min-height: 10vh;
-  background-color: #e4e4e4fd;
+  /* background-color: #e4e4e4fd; */
+  background-image: radial-gradient(circle farthest-side, #fffffffd, #d8d6d6fd);
   padding: 20px;
   margin-top: 120px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

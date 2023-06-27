@@ -1,27 +1,7 @@
 <template>
   <div class="view-grade-form">
-    <h2 id="view-grade-form-header">ASSIGNMENT DETAILS</h2>
-    <table id="view-assignment-info">
-      <thead id="grade-header-row">
-        <tr>
-          <td id="grade-student-name-head">STUDENT NAME</td>
-          <td class="assignment-title">ASSIGNMENT</td>
-          <td class="assignment-status">STATUS</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr id="grade-body-row">
-          <td class="grade-name">
-            {{ currentGradeObject.firstName }}
-            {{ currentGradeObject.lastName }}
-          </td>
-          <td class="assignment-title">
-            {{ currentGradeObject.assignmentTitle }}
-          </td>
-          <td class="assignment-status">{{ currentGradeObject.status }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2 id="view-grade-form-header">GRADE VIEW</h2>
+
     <table id="student-score-table">
       <thead>
         <tr id="score-header-row">
@@ -46,14 +26,14 @@
         {{ currentGradeObject.feedback }}
       </p>
     </div>
-    <div class="submission-section">
+    <!-- <div class="submission-section">
       <label for="submission-content" id="submission-content-label"
         >SUBMISSION CONTENT:</label
       >
       <p id="submission-content">
         {{ currentGradeObject.submissionContent }}
       </p>
-    </div>
+    </div> -->
 
     <button id="exit-grade-btn" v-on:click.prevent="exitGrade">Close</button>
   </div>
@@ -110,22 +90,6 @@ export default {
   line-height: 1.5rem;
 }
 
-#submission-content {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: white;
-  width: 95%;
-  padding-top: 15px;
-  padding-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-top: 0px;
-  min-height: 20vh;
-  max-height: 20vh;
-  box-shadow: 0 0 2px 1px rgba(71, 71, 71, 0.205);
-  border: none;
-  border-radius: 5px;
-}
-#submission-content-label,
 #feedback-label {
   font-weight: bold;
   font-size: 1rem;
@@ -136,12 +100,12 @@ export default {
 #feedback-content {
   width: 95%;
   min-height: 10vh;
-  background-color: #fff8d9fd;
+  background-color: #ffffff;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   box-shadow: 0 0 4px 3px rgba(97, 97, 97, 0.151);
-  border: 1px solid rgba(199, 165, 15, 0.637);
+  border: 1px solid rgba(0, 0, 0, 0.637);
   border-radius: 5px;
 }
 
@@ -156,7 +120,7 @@ export default {
   font-size: 0.8em;
   text-transform: uppercase;
   padding: 5px;
-  background-color: #d66c6c;
+  background-color: #ff0000;
   color: #040f31de;
 }
 

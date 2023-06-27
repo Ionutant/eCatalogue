@@ -10,10 +10,7 @@
         </div>
       </div>
       <div class="hero-two">
-        <img
-          class="hero-picture"
-          src="https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/Tech_Elevator/original.png?1579896670"
-        />
+        <img class="hero-picture" src="../../public/logo-sc.png" />
       </div>
     </div>
   </div>
@@ -60,7 +57,7 @@ export default {
 .hero-one {
   align-self: center;
   justify-content: flex-start;
-  color: #f4ff57;
+  color: #000000;
   width: 50%;
 }
 .course-btns-container {
